@@ -1,5 +1,9 @@
 FROM amazonlinux:latest
 
+WORKDIR /docker-rentzone-project
+
+COPY . .
+
 # Install dependencies
 RUN yum update -y && \
     yum install -y httpd && \
@@ -15,6 +19,7 @@ RUN cd /var/www/html
 
 # download webfiles
 RUN curl -i https://github.com/walasee/docker-rentzone-project/raw/main/rentzone.zip
+#RUN cp rentzone.zip 
 
 # unzip folder
 RUN unzip rentzone.zip
