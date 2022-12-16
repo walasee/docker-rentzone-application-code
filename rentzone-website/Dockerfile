@@ -9,11 +9,6 @@ RUN yum update -y && \
     yum install php php-common php-pear -y && \
     yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y
 
-#install mysql5.7
-RUN rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-    rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
-    yum install mysql-community-server -y
-
 # change directory
 RUN cd /var/www/html
 
