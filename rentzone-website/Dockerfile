@@ -4,13 +4,11 @@ FROM amazonlinux
 
 # install dependencies
 
-#update linux server 
+# install apache
 RUN yum update -y
+RUN yum -y install httpd
+RUN echo hoge > /var/www/html/index.html
 
-# install apache 
-RUN yum install -y httpd httpd-tools mod_ssl
-    systemctl enable httpd 
-    systemctl start httpd
 
 #3. install php 7.4
 RUN amazon-linux-extras enable php7.4
@@ -22,11 +20,9 @@ RUN amazon-linux-extras enable php7.4
 RUN rpm -Uvh https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
     rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
     yum install mysql-community-server -y
-    systemctl enable mysqld
-    systemctl start mysqld
 
 #5. download the RentZone zip from s3 to the html directory on the ec2 instance
-RUN aws s3 sync s3://aosnote-rentzone-web-files /var/www/html
+RUN aws s3 sync s3://rentzoneapplicationfiles /var/www/html
 
 #6. unzip the RentZone zip folder
 RUN cd /var/www/html
@@ -60,4 +56,4 @@ RUN sudo service httpd restart
 EXPOSE 80
 
 #15 set the default application that will start when the container start
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
