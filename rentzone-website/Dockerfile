@@ -14,9 +14,7 @@ RUN yum update -y && \
     yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y && \
     yum install git -y
 
-RUN cp rentzone.zip rentzone-website && \
-    cd rentzone-website && \
-    unzip rentzone.zip
+RUN unzip rentzone.zip
 
 # copy files into html directory
 RUN cp -r rentzone/* /var/www/html/
