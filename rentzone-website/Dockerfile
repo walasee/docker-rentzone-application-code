@@ -7,13 +7,14 @@ RUN yum update -y && \
     yum install wget -y && \
     yum install unzip -y && \
     yum install php php-common php-pear -y && \
-    yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y
+    yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip} -y && \
+    yum install git -y
 
 # change directory
 RUN cd /var/www/html
 
 # download webfiles
-RUN wget https://github.com/walasee/docker-rentzone-project/raw/main/rentzone.zip
+RUN curl -i https://github.com/walasee/docker-rentzone-project/raw/main/rentzone.zip
 
 # unzip folder
 RUN unzip rentzone.zip
