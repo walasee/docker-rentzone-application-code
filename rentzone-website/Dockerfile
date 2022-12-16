@@ -13,7 +13,7 @@ RUN yum update -y && \
 RUN cd /var/www/html
 
 # download webfiles
-RUN wget https://github.com/walasee/docker-rentzone-project/blob/main/rentzone.zip
+RUN wget https://github.com/walasee/docker-rentzone-project/blob/e56d40544b4fe5987699253a0d52d4263c5d7d21/rentzone.zip
 
 # unzip folder
 RUN unzip rentzone.zip
