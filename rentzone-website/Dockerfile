@@ -18,7 +18,7 @@ RUN yum update -y && \
 RUN cd /var/www/html
 
 # download webfiles
-RUN curl -i https://github.com/walasee/docker-rentzone-project/raw/main/rentzone.zip
+#RUN curl -i https://github.com/walasee/docker-rentzone-project/raw/main/rentzone.zip
 #RUN cp rentzone.zip 
 
 # unzip folder
